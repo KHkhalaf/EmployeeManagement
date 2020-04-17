@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -241,6 +242,15 @@ namespace EmployeeManagement.Controllers
 
                     var confirmationLink = Url.Action("ConfirmEmail", "Account",
                                             new { userId = user.Id, token = token }, Request.Scheme);
+
+                    MailMessage mailMessage = new MailMessage("bestmind11111@gmail.com", "bestmind22222@gmail.com");
+                    mailMessage.Subject = "Email Confirmation";
+                    mailMessage.Body = "Please Confirm your Email by click on this link "+ confirmationLink;
+                    mailMessage.IsBodyHtml = true;
+                    SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
+                    smtpClient.Credentials = new System.Net.NetworkCredential("bestmind11111@gmail.com", "YourPassword");
+                    smtpClient.EnableSsl = true;
+                    smtpClient.Send(mailMessage);
 
                     logger.Log(LogLevel.Warning, confirmationLink);
 
