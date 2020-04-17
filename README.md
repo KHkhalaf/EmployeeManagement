@@ -1,5 +1,5 @@
 # EmployeeManagement
-please before run the project implement update-database command and enable ![lesssecureapps](https://myaccount.google.com/lesssecureapps)
+please before run the project implement update-database command and enable lesssecureapps from here https://myaccount.google.com/lesssecureapps
 ### CRUD operations 
 ----------------------------------------------
 ### add roles and claims to employees
